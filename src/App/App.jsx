@@ -5,6 +5,7 @@ import Loader from '../Loader/Loader';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import ImageModal from '../ImageModal/ImageModal';
+import Modal from 'react-modal';
 
 export default function App() {
     const [images, setImages] = useState([]);
@@ -14,6 +15,8 @@ export default function App() {
     const [error, setError] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
 
     const fetchImages = async () => {
         setLoading(true);
@@ -59,6 +62,15 @@ export default function App() {
             {loading && <Loader />}
             {images.length > 0 && !loading && <LoadMoreBtn onClick={handleLoadMore} />}
             {isModalOpen && <ImageModal isOpen={isModalOpen} image={selectedImage} onClose={() => setIsModalOpen(false)} />}
+            <Modal
+  isOpen={modalIsOpen}
+  onRequestClose={() => setModalIsOpen(false)}
+>
+  <h2>Image Preview</h2>
+  <img src={images} alt="Large version" />
+  <button onClick={() => setModalIsOpen(false)}>Close</button>
+</Modal>
+
         </div>
     );
 }
