@@ -14,6 +14,7 @@ export default function App() {
     console.log(response);
 
     setImage(response.data);
+    actions.resetForm();
   };
 
 
@@ -26,5 +27,11 @@ export default function App() {
         </Form>
       </Formik>
     </div>
+
+    {image &&
+      <div>
+      <img src="" alt="" />
+      </div>
+    }
   )
 }
