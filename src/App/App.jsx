@@ -5,7 +5,9 @@ import Loader from '../Loader/Loader';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import ImageModal from '../ImageModal/ImageModal';
-import Modal from 'react-modal';
+// import Modal from 'react-modal';
+// const [largeImageURL, setLargeImageURL] = useState(null);
+
 
 export default function App() {
     const [images, setImages] = useState([]);
@@ -15,7 +17,7 @@ export default function App() {
     const [error, setError] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+    // const [modalIsOpen, setModalIsOpen] = useState(false);
 
 
     const fetchImages = async () => {
@@ -37,6 +39,7 @@ export default function App() {
         }
     }, [query, page]);
 
+
     const handleSearchSubmit = (newQuery) => {
         setQuery(newQuery);
         setPage(1);
@@ -52,25 +55,30 @@ export default function App() {
         setIsModalOpen(true);
     };
 
+    const openModal = (image) => {
+      setSelectedImage(image);
+      setIsModalOpen(true);
+    };
   
+    const closeModal = () => {
+      setIsModalOpen(false);
+      setSelectedImage(null);
+    };
 
     return (
         <div>
             <SearchBar onSubmit={handleSearchSubmit} />
             {error && <ErrorMessage message={error} />}
-            <ImageGallery images={images} onImageClick={handleImageClick} />
+            <ImageGallery images={images} openModal={openModal} handleImageClick={handleImageClick} />
             {loading && <Loader />}
             {images.length > 0 && !loading && <LoadMoreBtn onClick={handleLoadMore} />}
-            {isModalOpen && <ImageModal isOpen={isModalOpen} image={selectedImage} onClose={() => setIsModalOpen(false)} />}
-            <Modal
-  isOpen={modalIsOpen}
-  onRequestClose={() => setModalIsOpen(false)}
->
-  <h2>Image Preview</h2>
-  <img src={images} alt="Large version" />
-  <button onClick={() => setModalIsOpen(false)}>Close</button>
-</Modal>
-
+            {isModalOpen && selectedImage && (
+            <ImageModal
+            isOpen={isModalOpen}
+            onRequestClose={closeModal}
+            image={selectedImage}
+            />
+      )}
         </div>
     );
 }

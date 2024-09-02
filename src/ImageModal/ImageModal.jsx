@@ -1,34 +1,32 @@
-import Modal from 'react-modal';
-import { useEffect } from 'react';
-Modal.setAppElement('#root');
+import Modal from "react-modal";
+import css from './ImageModal.module.css'
 
+Modal.setAppElement("#root");
 
-export default function ImageModal({ isModalOpen, onClose, imageSrc }) {
-    useEffect(() => {
-        const handleEsc = (event) => {
-          if (event.key === 'Escape') {
-            onClose(); // закриваємо модальне вікно
-          }
-        };
-        window.addEventListener('keydown', handleEsc);
-    
-        return () => {
-          window.removeEventListener('keydown', handleEsc);
-        };
-      }, [onClose]);
-    return (
-        <Modal isOpen={isModalOpen} onRequestClose={onClose}>
-            isOpen && (
-      <div className="modal" onClick={onClose}> 
-        <img src={imageSrc} alt="" />
+const ImageModal = ({ isOpen, onRequestClose, image }) => {
+    const { urls, alt_description, user, likes } = image;
+  
+
+  return (
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      className={css.modal}
+      overlayClassName={css.overlay}
+    >
+      <div>
+        <img
+          src={urls.regular}
+          alt={alt_description}
+        />
+        <p>Author: {user.name}</p>
+        <p>Likes: {likes}</p>
+        <button onClick={onRequestClose}>
+          Close
+        </button>
       </div>
-    )
-    <div className="modal" onClick={onClose}>
-  <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-    <img src={imageSrc} alt="" />
-  </div>
-</div>
+    </Modal>
+  );
+};
 
-        </Modal>
-    );
-}
+export default ImageModal;
