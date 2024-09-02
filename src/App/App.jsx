@@ -52,7 +52,7 @@ export default function App() {
         setIsModalOpen(true);
     };
 
-    
+  
 
     return (
         <div>
