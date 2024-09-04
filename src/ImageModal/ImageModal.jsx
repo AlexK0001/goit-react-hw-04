@@ -4,7 +4,7 @@ import css from './ImageModal.module.css'
 Modal.setAppElement("#root");
 
 const ImageModal = ({ isOpen, onRequestClose, image }) => {
-    const { urls, alt_description, user, likes } = image;
+    const { largeImageURL, alt_description, user, likes } = image;
   
 
   return (
@@ -16,7 +16,7 @@ const ImageModal = ({ isOpen, onRequestClose, image }) => {
     >
       <div>
         <img
-          src={urls.regular}
+          src={largeImageURL}
           alt={alt_description}
         />
         <p>Author: {user.name}</p>

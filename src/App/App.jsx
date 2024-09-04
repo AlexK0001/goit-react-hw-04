@@ -69,7 +69,7 @@ export default function App() {
         <div>
             <SearchBar onSubmit={handleSearchSubmit} />
             {error && <ErrorMessage message={error} />}
-            <ImageGallery images={images} openModal={openModal} handleImageClick={handleImageClick} />
+            <ImageGallery images={images} handleImageClick={openModal} />
             {loading && <Loader />}
             {images.length > 0 && !loading && <LoadMoreBtn onClick={handleLoadMore} />}
             {isModalOpen && selectedImage && (
@@ -77,6 +77,8 @@ export default function App() {
             isOpen={isModalOpen}
             onRequestClose={closeModal}
             image={selectedImage}
+            largeImageURL={largeImageURL}
+            onClose={closeModal}
             />
       )}
         </div>
