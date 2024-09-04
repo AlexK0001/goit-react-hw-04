@@ -3,14 +3,14 @@ import css from './ImageModal.module.css'
 
 Modal.setAppElement("#root");
 
-const ImageModal = ({ isOpen, onRequestClose, image }) => {
+const ImageModal = ({ isOpen, onClose, image }) => {
     const { largeImageURL, alt_description, user, likes } = image;
   
 
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={onRequestClose}
+      onClose={onClose}
       className={css.modal}
       overlayClassName={css.overlay}
     >
@@ -21,7 +21,7 @@ const ImageModal = ({ isOpen, onRequestClose, image }) => {
         />
         <p>Author: {user.name}</p>
         <p>Likes: {likes}</p>
-        <button onClick={onRequestClose}>
+        <button onClick={onClose}>
           Close
         </button>
       </div>

@@ -74,10 +74,8 @@ export default function App() {
             {images.length > 0 && !loading && <LoadMoreBtn onClick={handleLoadMore} />}
             {isModalOpen && selectedImage && (
             <ImageModal
-            isOpen={isModalOpen}
-            onRequestClose={closeModal}
-            image={selectedImage}
-            largeImageURL={largeImageURL}
+            image={this.state.largeImageURL} 
+            isOpen={openModal} 
             onClose={closeModal}
             />
       )}
