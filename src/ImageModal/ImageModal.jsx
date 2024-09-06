@@ -4,7 +4,7 @@ import css from './ImageModal.module.css'
 Modal.setAppElement("#root");
 
 const ImageModal = ({ isOpen, onClose, image }) => {
-    const { largeImageURL, alt_description, user, likes } = image;
+    // const { largeImageURL, alt_description, user, likes } = image;
   
 
   return (
