@@ -50,10 +50,10 @@ export default function App() {
         setPage(prevPage => prevPage + 1);
     };
 
-    const handleImageClick = (image) => {
-        setSelectedImage(image);
-        setIsModalOpen(true);
-    };
+    // const handleImageClick = (image) => {
+    //     setSelectedImage(image);
+    //     setIsModalOpen(true);
+    // };
 
     const openModal = (image) => {
       setSelectedImage(image);
@@ -74,7 +74,7 @@ export default function App() {
             {images.length > 0 && !loading && <LoadMoreBtn onClick={handleLoadMore} />}
             {isModalOpen && selectedImage && (
             <ImageModal
-            image={image.urls.full} 
+            image={selectedImage} 
             isOpen={openModal} 
             onClose={closeModal}
             />

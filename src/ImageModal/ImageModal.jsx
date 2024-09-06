@@ -10,17 +10,18 @@ const ImageModal = ({ isOpen, onClose, image }) => {
   return (
     <Modal
       isOpen={isOpen}
-      onClose={onClose}
+      onRequestClose={onClose}
       className={css.modal}
       overlayClassName={css.overlay}
     >
       <div>
         <img
-          src={largeImageURL}
-          alt={alt_description}
+          src={image?.urls.full}
+          alt={image?.alt_description}
+          width="100%"
         />
-        <p>Author: {user.name}</p>
-        <p>Likes: {likes}</p>
+        <p>Author: {image?.user.name}</p>
+        <p>Likes: {image?.likes}</p>
         <button onClick={onClose}>
           Close
         </button>
