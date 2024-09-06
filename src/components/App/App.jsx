@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import SearchBar from '../SearchBar/SearchBar';
-import ImageGallery from '../ImageGallery/ImageGallery';
-import Loader from '../Loader/Loader';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
-import ImageModal from '../ImageModal/ImageModal';
+import SearchBar from '../../SearchBar/SearchBar';
+import ImageGallery from '../../ImageGallery/ImageGallery';
+import Loader from '../../Loader/Loader';
+import ErrorMessage from '../../ErrorMessage/ErrorMessage';
+import LoadMoreBtn from '../../LoadMoreBtn/LoadMoreBtn';
+import ImageModal from '../../ImageModal/ImageModal';
 // import Modal from 'react-modal';
 // const [largeImageURL, setLargeImageURL] = useState(null);
 
